@@ -20,7 +20,7 @@ app.use(session({
 }))
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, 'client/build')));
+    app.use(express.static(path.resolve(__dirname, 'public')));
 } else {
     const corsOptions = {
         origin: ['http://127.0.0.1:3000', 'http://localhost:3000'],
@@ -43,7 +43,7 @@ connectSockets(io);
 
 const port = process.env.PORT || 3030;
 app.get('/**', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/build/index.html'));
+    res.sendFile(path.join(__dirname, 'public'));
 })
 http.listen(port, () => {
     console.log(`A wild server appeared. [${port}]`);
