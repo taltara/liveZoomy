@@ -1,0 +1,1 @@
+export const KEY_USER = 'USER_DATA'; // local storage key

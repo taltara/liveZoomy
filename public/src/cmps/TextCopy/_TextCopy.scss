@@ -1,0 +1,38 @@
+.textcopy {
+  width: 100%;
+  transition: 0.35s cubic-bezier(0.42, 0.5, 0.25, 1);
+  input {
+    width: 85%;
+    padding: 4px 0 4px 2px;
+    font-size: 14px;
+    border: none;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+    outline-color: rgba(0, 0, 0, 0.15);
+    transition: 0.35s cubic-bezier(0.42, 0.5, 0.25, 1);
+  }
+
+  a {
+    .Tilt {
+      height: unset;
+      width: unset;
+      min-width: unset;
+      .tilt-button {
+        height: unset;
+        width: unset;
+        p {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  &.copied {
+    a {
+      .Tilt {
+        .tilt-button {
+          background-color: lightgreen;
+        }
+      }
+    }
+  }
+}

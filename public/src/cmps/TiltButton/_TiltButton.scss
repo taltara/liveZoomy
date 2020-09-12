@@ -1,0 +1,30 @@
+.Tilt {
+  width: fit-content;
+  height: 50px;
+  min-width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .tilt-button {
+    transition: 0.15s ease-in-out;
+    border-radius: 4px;
+    padding: 3px 5px;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    &:hover {
+    }
+  
+    // &.button-light {
+    //   color: rgba(255, 255, 255, 0.85);
+    //   background-color: #323031;
+    //   box-shadow: 0px 0px 4px 0px rgba(255, 255, 255, 0.3);
+    // }
+  
+    background-color: lighten($color: #D7E1EC, $amount: 10%) ;
+
+  }
+  
+}
+

@@ -1,0 +1,73 @@
+.zoomy {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  max-width: 1100px;
+  min-width: 375px;
+  overflow-x: hidden;
+
+  .zoomy-buttons {
+    
+    & > *:not(:last-of-type) {
+      margin-bottom: 30px;
+    }
+
+    .link-block {
+      overflow-y: auto;
+      width: 100%;
+      .block-title {
+        -webkit-user-select: none;
+        font-size: 24px;
+        font-family: animosaExtraBold;
+        color: rgba(0, 0, 0, 0.75);
+        letter-spacing: 0.5px;
+        line-height: 22px;
+        padding-bottom: 2px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+      }
+
+      .block-links {
+        width: 100%;
+        & > * {
+          margin: 15px;
+        }
+      }
+
+      .link-preview {
+        position: relative;
+        .full-indicator {
+          transition: 0.25s ease-in-out;
+          &.full {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            width: 15px;
+            height: 15px;
+            // background-color: lighten($color: tomato, $amount: 10);
+            background-color: tomato;
+            border-radius: 50%;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+            z-index: 2;
+          }
+        }
+
+        &.hidden-link {
+          cursor: default;
+          pointer-events: none;
+          filter: grayscale(1);
+          opacity: 0.25;
+        }
+
+        &.chosen-link {
+
+        }
+      }
+
+      &.secondary {
+        &.mute {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
