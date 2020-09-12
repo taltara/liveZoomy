@@ -1,0 +1,50 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+
+const app = express();
+const http = require('http').createServer(app);
+var io = require('socket.io')(http);
+
+// Express App Config
+app.use(cookieParser())
+app.use(bodyParser.json({ limit: '10mb', extended: true }))
+app.use(session({
+    secret: 'MyS@CR@TC0dE1908ItsoNlyMiNE',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}))
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.resolve(__dirname, 'client/build')));
+} else {
+    const corsOptions = {
+        origin: ['http://127.0.0.1:3000', 'http://localhost:3000'],
+        credentials: true
+    };
+    app.use(cors(corsOptions));
+}
+
+const authRoutes = require('./api/auth/auth.routes');
+const boardRoutes = require('./api/board/board.routes');
+const userRoutes = require('./api/user/user.routes');
+const connectSockets = require('./api/socket/socket.routes');
+
+console.log(boardRoutes);
+app.use('/api/board', boardRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+connectSockets(io);
+
+
+const port = process.env.PORT || 3030;
+app.get('/**', (req, res) => {
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
+})
+http.listen(port, () => {
+    console.log(`A wild server appeared. [${port}]`);
+});
